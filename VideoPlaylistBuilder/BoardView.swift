@@ -131,12 +131,10 @@ struct BoardView: View {
     // MARK: Footer (pre-sized for two lines so it never grows on wrap)
 
     private var footer: some View {
-        HStack(spacing: 8) {
+        Group {
             if let status = store.status {
-                Image(systemName: status.kind.symbol).foregroundStyle(status.kind.tint)
-                Text(status.text)
+                Text(status.text).foregroundStyle(status.kind.tint)
             } else {
-                Image(systemName: "tray.and.arrow.down").foregroundStyle(.tertiary)
                 Text("Drop videos on a card to add them · drop an .m3u to add a playlist")
                     .foregroundStyle(.secondary)
             }

@@ -177,14 +177,10 @@ struct PlaylistDetailView: View {
     private var statusBar: some View {
         ZStack {
             // Centered message (mirrors the board footer).
-            HStack(spacing: 8) {
+            Group {
                 if let feedback = playlist.feedback {
-                    Image(systemName: feedback.kind.symbol)
-                        .foregroundStyle(feedback.kind.tint)
-                    Text(feedback.text)
+                    Text(feedback.text).foregroundStyle(feedback.kind.tint)
                 } else {
-                    Image(systemName: "tray.and.arrow.down")
-                        .foregroundStyle(.tertiary)
                     Text("Drag videos or folders here to add them")
                         .foregroundStyle(.secondary)
                 }

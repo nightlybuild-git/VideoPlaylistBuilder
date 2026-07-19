@@ -15,7 +15,7 @@ struct VideoPlaylistBuilderApp: App {
                 // from. After that, the window remembers where you put it.
                 .background(WindowConfigurator())
         }
-        .defaultSize(width: 360, height: 420)
+        .defaultSize(width: 385, height: 420)
         .commands { PlaylistCommands(store: store) }
 
         Settings {
@@ -38,7 +38,7 @@ private struct WindowConfigurator: NSViewRepresentable {
             guard !UserDefaults.standard.bool(forKey: key) else { return }
             UserDefaults.standard.set(true, forKey: key)
 
-            let size = NSSize(width: 360, height: 420)
+            let size = NSSize(width: 385, height: 420)
             guard let visible = (window.screen ?? NSScreen.main)?.visibleFrame else { return }
             let origin = NSPoint(x: visible.minX, y: visible.maxY - size.height)  // top-left
             window.setFrame(NSRect(origin: origin, size: size), display: true, animate: false)
